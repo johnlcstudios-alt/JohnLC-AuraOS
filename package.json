@@ -1,0 +1,95 @@
+{
+  "name": "johnlc-auraos",
+  "productName": "JohnLC AuraOS",
+  "version": "0.1.0",
+  "private": true,
+  "description": "JohnLC AuraOS - an open-source hybrid desktop environment inspired by macOS and Windows 11",
+  "author": "JohnLC",
+  "license": "MIT",
+  "homepage": "https://github.com/johnlcstudios-alt/JohnLC-AuraOS",
+  "main": "dist-electron/electron/main.js",
+  "bin": {
+    "myos": "bin/myos.mjs",
+    "start-os": "bin/myos.mjs"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:web": "vite",
+    "build": "npm run typecheck && vite build && npm run build:electron",
+    "build:renderer": "vite build",
+    "build:electron": "node scripts/build-electron.mjs",
+    "start": "electron .",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.electron.json --noEmit",
+    "installer": "node installer/setup.mjs",
+    "doctor": "node installer/setup.mjs --doctor",
+    "icon": "node scripts/make-icon.mjs",
+    "dist": "npm run build && electron-builder --win nsis",
+    "dist:dir": "npm run build && electron-builder --win dir",
+    "smoke": "npm run build && node scripts/smoke.mjs",
+    "smoke:web": "node scripts/smoke-web.mjs",
+    "smoke:run": "node scripts/smoke.mjs"
+  },
+  "dependencies": {
+    "framer-motion": "^11.15.0",
+    "lucide-react": "^0.469.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "electron": "^33.2.0",
+    "electron-builder": "^26.15.3",
+    "esbuild": "^0.25.12",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5"
+  },
+  "build": {
+    "appId": "com.johnlc.auraos",
+    "productName": "JohnLC AuraOS",
+    "copyright": "Copyright © 2026 JohnLC AuraOS contributors",
+    "asar": true,
+    "npmRebuild": false,
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json",
+      "!node_modules/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "JohnLC-AuraOS-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": "always",
+      "createStartMenuShortcut": true,
+      "shortcutName": "AuraOS",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false
+    }
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
