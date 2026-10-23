@@ -3,6 +3,8 @@
 > An open-source desktop environment that fuses the **macOS** Dock / Spotlight / Top Bar
 > with the **Windows 11** Snap Layouts, centred Taskbar and Quick Settings.
 
+[### Download](https://johnlcstudios-alt.github.io/JohnLC-AuraOS/landing/download.html)
+
 JohnLC AuraOS is not a Linux distribution or a bootloader — it is a complete, installable
 desktop **shell** built with Electron, React, TypeScript and Tailwind. It runs full
 screen on macOS, Windows and Linux, talks to your real filesystem and shell, and
