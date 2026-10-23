@@ -96,7 +96,9 @@ renders a live glass/acrylic interface on top of your operating system.
 
 The release installer is **fully self-contained**: Electron, the renderer, and the
 native host bridge are embedded, so the target PC needs no Node.js, npm, Git or
-internet connection. Build it from source with:
+internet connection. Download the current build from the
+[Releases page](https://github.com/johnlcstudios-alt/JohnLC-AuraOS/releases/latest), or
+build it from source with:
 
 ```bash
 npm install
